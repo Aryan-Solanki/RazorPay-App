@@ -71,6 +71,7 @@ dependencies:
   path_provider: ^2.0.1
   package_info_plus: ^1.0.6
   responsive_builder: ^0.2.0+2
+  razorpay_flutter: 1.1.1
 
 
 dev_dependencies:
