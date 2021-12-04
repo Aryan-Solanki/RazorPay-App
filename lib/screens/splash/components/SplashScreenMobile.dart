@@ -18,13 +18,13 @@ class _SplashScreenMobileState extends State<SplashScreenMobile> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to Orev, Let’s shop!",
+      "text": "Welcome to RazorPay, Let’s shop!",
       "image": "assets/images/splash_1.png",
       "anim": ""
     },
     {
       "text":
-          "Nature is Organic,We at Orev delivers\n highest quality Organic Products.",
+          "Nature is Organic,We at RazorPay delivers\n highest quality Organic Products.",
       "image": "assets/images/splash_2.png",
       "anim": "assets/animation/splash_2.json"
     },

@@ -18,7 +18,7 @@ class SplashContent extends StatelessWidget {
       children: <Widget>[
         Spacer(),
         Text(
-          "Orev Health",
+          "Razor Pay",
           style: TextStyle(
             fontSize: getProportionateScreenHeight(36),
             color: kPrimaryColor,

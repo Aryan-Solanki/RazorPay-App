@@ -79,9 +79,9 @@ class _OrderDetailsMobileState extends State<OrderDetailsMobile> {
     var options = {
       'key': 'rzp_test_dMT9wqbYaXcVGJ',
       'amount': 2000,
-      'name': 'Acme Corp.',
-      'description': 'Fine T-Shirt',
-      'prefill': {'contact': '8888888888', 'email': 'test@razorpay.com'},
+      'name': 'Razor Pay',
+      'description': 'Organic Food',
+      'prefill': {'contact': '7983927625', 'email': 'solankiaryan5@hotmail.com'},
       'external': {
         'wallets': ['paytm']
       }
@@ -127,232 +127,6 @@ class _OrderDetailsMobileState extends State<OrderDetailsMobile> {
 
   String transactionId = "";
 
-  // void generateTxnToken() async {
-  //   setState(() {
-  //     loading = true;
-  //   });
-  //   transactionId = DateTime.now().millisecondsSinceEpoch.toString();
-  //
-  //   String callBackUrl = (testing
-  //           ? 'https://securegw-stage.paytm.in'
-  //           : 'https://securegw.paytm.in') +
-  //       '/theia/paytmCallback?ORDER_ID=' +
-  //       transactionId;
-  //
-  //   //Host the Server Side Code on your Server and use your URL here. The following URL may or may not work. Because hosted on free server.
-  //   //Server Side code url: https://github.com/mrdishant/Paytm-Plugin-Server
-  //   var url = 'https://desolate-anchorage-29312.herokuapp.com/generateTxnToken';
-  //
-  //   var OrderDetailsMobile = json.encode({
-  //     "mid": mid,
-  //     "key_secret": PAYTM_MERCHANT_KEY,
-  //     "website": website,
-  //     "orderId": transactionId,
-  //     // "amount": (widget.product.varients[widget.currentVarient].price * widget.quantity)
-  //     //     .toString(),
-  //     "amount": "${widget.totalCost}",
-  //     "callbackUrl": callBackUrl,
-  //     "custId": "122",
-  //     "testing": testing ? 0 : 1
-  //   });
-  //
-  //   try {
-  //     final response = await http.post(
-  //       Uri.parse(url),
-  //       body: OrderDetailsMobile,
-  //       headers: {'Content-type': "application/json"},
-  //     );
-  //     print("Response is");
-  //     print(response.body);
-  //     String txnToken = response.body;
-  //     setState(() {
-  //       payment_response = txnToken;
-  //     });
-  //
-  //     var paytmResponse = Paytm.payWithPaytm(
-  //         mid,
-  //         transactionId,
-  //         txnToken,
-  //         // (widget.product.varients[widget.currentVarient].price *
-  //         //         widget.quantity)
-  //         //     .toString(),
-  //         "${widget.totalCost}",
-  //         callBackUrl,
-  //         testing);
-  //
-  //     paytmResponse.then((value) {
-  //       print(value);
-  //       setState(() async {
-  //         loading = false;
-  //         print("Value is ");
-  //         print(value);
-  //         if (value['error']) {
-  //           payment_response = value['errorMessage'];
-  //         } else {
-  //           if (value['response'] != null) {
-  //             payment_response = value['response']['STATUS'];
-  //             print(
-  //                 "Response                                           STATUS   ${value['response']['STATUS']}");
-  //             String authkey = UserSimplePreferences.getAuthKey() ?? "";
-  //             if (authkey == "") {
-  //               print("Some error occured");
-  //             }
-  //
-  //             updateWalletBalance(newwalletbalance, orderId, timestamp) async {
-  //               newwalletbalance = newwalletbalance.toDouble();
-  //               UserServices _service = new UserServices();
-  //               var user = await _service.getUserById(authkey);
-  //               var transactionsList = user["walletTransactions"];
-  //               transactionsList.add({
-  //                 "newWalletBalance": newwalletbalance,
-  //                 "oldWalletBalance": widget.oldwalletbalance,
-  //                 "orderId": orderId,
-  //                 "timestamp": timestamp
-  //               });
-  //               var values = {
-  //                 "id": authkey,
-  //                 "walletAmt": newwalletbalance,
-  //                 "walletTransactions": transactionsList
-  //               };
-  //               _service.updateUserData(values);
-  //             }
-  //
-  //             String orderIdnew =
-  //                 DateTime.now().millisecondsSinceEpoch.toString();
-  //
-  //             Order order = Order(
-  //                 qty: widget.quantity,
-  //                 cod: false,
-  //                 deliveryBoy: "",
-  //                 deliveryCost: widget.deliveryCost,
-  //                 orderStatus: "Ordered",
-  //                 product: new OrderProduct(
-  //                     brandname: widget.product.brandname,
-  //                     id: widget.product.id,
-  //                     sellerId: widget.product.sellerId,
-  //                     title: widget.product.title,
-  //                     detail: widget.product.detail,
-  //                     variant: widget.product.varients[widget.currentVarient],
-  //                     tax: widget.product.tax),
-  //                 orderId: orderIdnew,
-  //                 totalCost: widget.totalCost,
-  //                 userId: authkey,
-  //                 timestamp: DateTime.now().toString(),
-  //                 selectedAddress: widget.selectedaddress,
-  //                 responseMsg: value['response']['RESPMSG'],
-  //                 codcharges: widget.codSellerCharge,
-  //                 usedOrevWallet: widget.usedOrevWallet,
-  //                 transactionId: transactionId,
-  //                 invoice: "",
-  //                 orevWalletAmountUsed: widget.orevWalletMoneyUsed);
-  //             if (payment_response == "TXN_FAILURE") {
-  //               Navigator.push(
-  //                   context,
-  //                   (MaterialPageRoute(
-  //                       builder: (context) => PaymentSuccess(
-  //                             transaction_success: false,
-  //                             order: order,
-  //                           ))));
-  //               print("Transaction Failed");
-  //               print(value['response']['RESPMSG']);
-  //             } else if (payment_response == "TXN_SUCCESS") {
-  //               print("Transaction Successful");
-  //               print(value['response']['RESPMSG']);
-  //
-  //               var values = {
-  //                 "qty": order.qty,
-  //                 "cod": order.cod,
-  //                 "deliveryBoy": order.deliveryBoy,
-  //                 "deliveryCost": order.deliveryCost,
-  //                 "orderStatus": order.orderStatus,
-  //                 "product": {
-  //                   "brandname": order.product.brandname,
-  //                   "id": order.product.id,
-  //                   "sellerId": order.product.sellerId,
-  //                   "title": order.product.title,
-  //                   "detail": order.product.detail,
-  //                   "variant": {
-  //                     "title": order.product.variant.title,
-  //                     "default": order.product.variant.default_product,
-  //                     "id": order.product.variant.id,
-  //                     "onSale": {
-  //                       "comparedPrice": order.product.variant.comparedPrice,
-  //                       "discountPercentage":
-  //                           order.product.variant.discountPercentage,
-  //                       "isOnSale": order.product.variant.isOnSale,
-  //                     },
-  //                     "price": order.product.variant.price,
-  //                     "stock": {
-  //                       "inStock": order.product.variant.inStock,
-  //                       "qty": order.product.variant.qty
-  //                     },
-  //                     "variantDetails": {
-  //                       "images": order.product.variant.images,
-  //                       "title": order.product.variant.title,
-  //                     },
-  //                   },
-  //                   "tax": order.product.tax,
-  //                 },
-  //                 "orderId": order.orderId,
-  //                 "totalCost": order.totalCost,
-  //                 "userId": order.userId,
-  //                 "timestamp": order.timestamp,
-  //                 "responseMsg": order.responseMsg,
-  //                 "address": {
-  //                   "name": widget.selectedaddress["name"],
-  //                   "adline1": widget.selectedaddress["adline1"],
-  //                   "adline2": widget.selectedaddress["adline2"],
-  //                   "city": widget.selectedaddress["city"],
-  //                   "state": widget.selectedaddress["state"],
-  //                   "pincode": widget.selectedaddress["pincode"],
-  //                 },
-  //                 "codcharges": order.codcharges,
-  //                 "usedOrevWallet": order.usedOrevWallet,
-  //                 "orevWalletAmountUsed": order.orevWalletAmountUsed,
-  //                 "transactionId": transactionId,
-  //                 "invoice": order.invoice
-  //               };
-  //               OrderServices _services = new OrderServices();
-  //               try {
-  //                 await _services.addOrder(values, order.orderId);
-  //               } catch (e) {
-  //                 Fluttertoast.showToast(
-  //                     msg: e.toString(),
-  //                     toastLength: Toast.LENGTH_LONG,
-  //                     timeInSecForIosWeb: 2,
-  //                     gravity: ToastGravity.BOTTOM);
-  //               }
-  //
-  //               updateWalletBalance(
-  //                   widget.newwalletbalance, transactionId, order.timestamp);
-  //
-  //               Fluttertoast.showToast(
-  //                   msg: "Order Placed",
-  //                   toastLength: Toast.LENGTH_SHORT,
-  //                   timeInSecForIosWeb: 2,
-  //                   gravity: ToastGravity.BOTTOM);
-  //               Navigator.push(
-  //                   context,
-  //                   (MaterialPageRoute(
-  //                       builder: (context) => PaymentSuccess(
-  //                             transaction_success: true,
-  //                             order: order,
-  //                             cod: false,
-  //                           ))));
-  //             }
-  //           }
-  //         }
-  //         payment_response += "\n" + value.toString();
-  //       });
-  //     });
-  //     Future.delayed(Duration(seconds: 1), () {
-  //       _btnController.reset();
-  //     });
-  //   } catch (e) {
-  //     _btnController.reset();
-  //     print(e);
-  //   }
-  // }
 
   final RoundedLoadingButtonController _btnController =
       RoundedLoadingButtonController();
@@ -420,24 +194,19 @@ class _OrderDetailsMobileState extends State<OrderDetailsMobile> {
                       SizedBox(
                         height: getProportionateScreenHeight(80),
                       ),
-                      FlatButton(
-                          onPressed: openCheckout , child: Text("pay")
+                      RoundedLoadingButton(
+                        successColor: kPrimaryColor,
+                        duration: Duration(milliseconds: 1300),
+                        width: getProportionateScreenHeight(500),
+                        height: getProportionateScreenHeight(56),
+                        color: kPrimaryColor2,
+                        child: Text("  Place Order  ",
+                            style: TextStyle(
+                                fontSize: getProportionateScreenHeight(18),
+                                color: Colors.white)),
+                        controller: _btnController,
+                        onPressed: openCheckout,
                       ),
-                      // RoundedLoadingButton(
-                      //   successColor: kPrimaryColor,
-                      //   duration: Duration(milliseconds: 1300),
-                      //   width: getProportionateScreenHeight(500),
-                      //   height: getProportionateScreenHeight(56),
-                      //   color: kPrimaryColor2,
-                      //   child: Text("  Place Order  ",
-                      //       style: TextStyle(
-                      //           fontSize: getProportionateScreenHeight(18),
-                      //           color: Colors.white)),
-                      //   controller: _btnController,
-                      //   onPressed: () async {
-                      //     openCheckout();
-                      //   },
-                      // ),
                       SizedBox(
                         height: getProportionateScreenHeight(20),
                       ),
